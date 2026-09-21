@@ -2,6 +2,29 @@
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/).
 
+## [2.2.0] — 2026-09-21
+
+### Ditambahkan
+- **Material kaca** pada permukaan mengambang: kepala, panel, kartu, kotak pencarian, cip, dan panel
+  preferensi memakai latar tembus pandang dengan buram dan garis kilau. Latar halaman diberi gradien
+  lembut agar ada yang dibiaskan.
+- **Sakelar "Efek kaca"** pada panel preferensi. Efek juga dimatikan otomatis pada kontras tinggi,
+  pada `prefers-reduced-transparency`, dan pada peramban tanpa dukungan `backdrop-filter`.
+- Panel preferensi naik sebagai lembar tarik dari bawah pada layar di bawah 600 px.
+- Memilih entri pada layar satu kolom membawa panel rincian ke tampilan.
+
+### Diubah
+- Seluruh jarak memakai skala `--s0`–`--s6` (kelipatan 4 px) dan seluruh ukuran huruf memakai skala
+  `--t-xs`–`--t-2xl`. Tidak ada lagi angka lepas.
+- Tinggi kendali diseragamkan: 2,25 rem pada tetikus, 2,75 rem pada layar sentuh.
+- Radius, bayangan, dan ikon mengikuti skala yang sama.
+- Deret saringan tingkat dapat digulir mendatar pada layar sempit.
+- `viewport-fit=cover` beserta `env(safe-area-inset-*)` untuk layar berponi.
+
+### Diperiksa
+- Kontras pada permukaan kaca: nama entri dan uraian 18,6:1; kode 5,2:1; teks lembut 4,8:1 — seluruhnya lolos WCAG AA.
+- Tidak ada geser mendatar pada 390 px maupun 1280 px.
+
 ## [2.1.0] — 2026-09-21
 
 ### Ditambahkan

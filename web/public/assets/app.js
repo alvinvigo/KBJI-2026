@@ -9,7 +9,7 @@
 
   const DIGIT = [1, 2, 3, 4, 6];
   const BAWAAN = { bahasa: "id", tema: "sistem", ukuran: "normal",
-                   kontras: false, spasi: false, "garis-tautan": false, gerak: false };
+                   kontras: false, spasi: false, "garis-tautan": false, gerak: false, kaca: true };
   const CONTOH = ["2511", "2320", "3112", "5120", "7112"];
 
   const el = (id) => document.getElementById(id);
@@ -61,6 +61,7 @@
     d.spasi = state.pref.spasi ? "lega" : "normal";
     d.garisTautan = state.pref["garis-tautan"] ? "selalu" : "normal";
     d.gerak = state.pref.gerak ? "minimal" : "normal";
+    d.kaca = state.pref.kaca ? "hidup" : "mati";
 
     for (const grup of document.querySelectorAll("[data-pref]")) {
       for (const b of grup.querySelectorAll(".pilihan-butir")) {
@@ -378,6 +379,13 @@
     document.title = `${entri.kode} ${entri.nama_resmi} — KBJI 2026`;
     const isi = rinciEl.querySelector(".rinci-isi");
     if (isi) isi.scrollTop = 0;
+
+    // Di layar satu kolom, panel rincian berada di bawah daftar. Bawa ke tampilan
+    // supaya pengguna ponsel tidak perlu menggulir sendiri setiap memilih entri.
+    if (dorongRiwayat && window.matchMedia("(max-width: 1000px)").matches) {
+      const panel = rinciEl.closest(".panel-rinci");
+      if (panel) panel.scrollIntoView({ behavior: state.pref.gerak ? "auto" : "smooth", block: "start" });
+    }
   }
 
   function gambarRinci(e) {

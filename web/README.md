@@ -25,6 +25,10 @@ web/
   tingkat di bawah posisi kini menampilkan jumlah turunannya.
 - **Preferensi & Aksesibilitas**: bahasa Indonesia/Inggris, tema, tiga ukuran teks, kontras tinggi,
   spasi baca lega, garis bawah tautan, dan kurangi animasi. Disimpan di `localStorage`.
+- **Material kaca**: permukaan tembus pandang dengan buram latar. Dapat dimatikan dari panel
+  preferensi, dan mati sendiri pada kontras tinggi, `prefers-reduced-transparency`, serta peramban
+  tanpa `backdrop-filter`.
+- Seluruh jarak dan ukuran huruf memakai skala token di `app.css`; sasaran sentuh minimum 2,75 rem.
 - Dua bahasa hanya menyentuh teks antarmuka. Kode, nama resmi, dan uraian jabatan tetap dalam
   bahasa Indonesia karena menerjemahkannya akan mengubah isi resmi.
 

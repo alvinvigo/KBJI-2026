@@ -98,6 +98,8 @@ window.KBJI_TEKS = {
     "pref.garisTautanKet": "Menandai tautan tanpa bergantung pada warna.",
     "pref.gerak": "Kurangi animasi",
     "pref.gerakKet": "Mematikan transisi dan gerakan halus.",
+    "pref.kaca": "Efek kaca",
+    "pref.kacaKet": "Permukaan tembus pandang dengan buram latar. Matikan bila teks terasa kurang tegas atau perangkat terasa berat.",
     "pref.setel": "Kembalikan ke bawaan",
     "pref.tersimpan": "Preferensi tersimpan di peramban ini.",
 
@@ -232,6 +234,8 @@ window.KBJI_TEKS = {
     "pref.garisTautanKet": "Marks links without relying on colour.",
     "pref.gerak": "Reduce motion",
     "pref.gerakKet": "Turns off transitions and smooth movement.",
+    "pref.kaca": "Glass effect",
+    "pref.kacaKet": "Translucent surfaces with background blur. Turn it off if text feels less crisp or the device feels sluggish.",
     "pref.setel": "Reset to defaults",
     "pref.tersimpan": "Preferences are saved in this browser.",
 
