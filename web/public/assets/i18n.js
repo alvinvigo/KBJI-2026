@@ -37,6 +37,8 @@ window.KBJI_TEKS = {
     "panel.rincian": "Rincian",
     "panel.lipat": "Tutup semua",
     "panel.bentang": "Buka golongan pokok",
+    "cabang.buka": "Buka rincian {kode}",
+    "cabang.tutup": "Tutup rincian {kode}",
 
     "daftar.kosong": "Tidak ada entri yang cocok.",
     "daftar.kosongSaran": "Coba kata kunci lain, atau cari dengan kodenya.",
@@ -173,6 +175,8 @@ window.KBJI_TEKS = {
     "panel.rincian": "Details",
     "panel.lipat": "Collapse all",
     "panel.bentang": "Expand major groups",
+    "cabang.buka": "Expand {kode}",
+    "cabang.tutup": "Collapse {kode}",
 
     "daftar.kosong": "No entry matches.",
     "daftar.kosongSaran": "Try different keywords, or search by code.",

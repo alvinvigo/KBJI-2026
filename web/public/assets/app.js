@@ -20,7 +20,7 @@
   const kotakCari = el("kotak-cari");
 
   const state = {
-    entri: [], peta: new Map(), anak: new Map(), meta: null,
+    entri: [], peta: new Map(), anak: new Map(), turunan: new Map(), meta: null,
     terbuka: new Set(), terpilih: null, kueri: "", tingkat: "",
     pref: { ...BAWAAN },
   };
@@ -78,13 +78,19 @@
     try { localStorage.setItem("kbji-pref", JSON.stringify(state.pref)); } catch (_) { /* diblokir */ }
   }
 
+  /** Perangkat dengan inti atau memori sedikit: kaca dimatikan sebagai bawaan.
+      Pilihan pengguna yang tersimpan selalu menang atas tebakan ini. */
+  function perangkatTerbatas() {
+    const inti = navigator.hardwareConcurrency || 8;
+    const memori = navigator.deviceMemory || 8;
+    return inti <= 4 || memori <= 4;
+  }
+
   function muatPref() {
-    try {
-      const simpan = JSON.parse(localStorage.getItem("kbji-pref") || "{}");
-      state.pref = { ...BAWAAN, ...simpan };
-    } catch (_) {
-      state.pref = { ...BAWAAN };
-    }
+    let simpan = {};
+    try { simpan = JSON.parse(localStorage.getItem("kbji-pref") || "{}"); } catch (_) { simpan = {}; }
+    state.pref = { ...BAWAAN, ...simpan };
+    if (!("kaca" in simpan)) state.pref.kaca = !perangkatTerbatas();
     if (!window.KBJI_TEKS[state.pref.bahasa]) state.pref.bahasa = "id";
   }
 
@@ -126,13 +132,22 @@
     return d.innerHTML;
   }
 
-  /** Banyaknya keturunan sebuah kode pada satu tingkat. Kode KBJI bersifat awalan. */
+  /** Banyaknya keturunan sebuah kode pada satu tingkat.
+      Dihitung sekali di siapkanTurunan(); sebelumnya tiap pembukaan entri memindai
+      3.010 baris lima kali, yaitu belasan ribu perulangan untuk angka yang tidak berubah. */
   function jumlahTurunan(kode, digit) {
-    let n = 0;
+    const t = state.turunan.get(kode);
+    return t ? t[digit] || 0 : 0;
+  }
+
+  function siapkanTurunan() {
+    for (const e of state.entri) state.turunan.set(e.kode, {});
     for (const e of state.entri) {
-      if (e.digit === digit && e.kode !== kode && e.kode.startsWith(kode)) n += 1;
+      for (const k of leluhur(e.kode)) {
+        const t = state.turunan.get(k);
+        if (t) t[e.digit] = (t[e.digit] || 0) + 1;
+      }
     }
-    return n;
   }
 
   function sorot(teks, kunci) {
@@ -196,6 +211,7 @@
         if (!state.anak.has(e.induk)) state.anak.set(e.induk, []);
         state.anak.get(e.induk).push(e);
       }
+      siapkanTurunan();
       gambarTentang();
       terapkanRute();
     } catch (kesalahan) {
@@ -206,23 +222,38 @@
 
   // ---------------------------------------------------------------- daftar
 
+  const PANAH = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">' +
+                '<path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" ' +
+                'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  /* Satu baris pohon terdiri dari dua kendali terpisah: tombol panah untuk membuka cabang,
+     dan tombol isi untuk membuka rincian. Keduanya tombol sungguhan agar pembaca layar
+     mengumumkannya sendiri-sendiri. */
   function barisHTML(e, kunci, bertingkat) {
     const punyaAnak = state.anak.has(e.kode);
     const terbuka = state.terbuka.has(e.kode);
-    const tanda = bertingkat && punyaAnak ? (terbuka ? "▾" : "▸") : "";
     const inden = bertingkat ? (e.digit === 6 ? 4 : e.digit - 1) : 0;
+    const jumlahAnak = punyaAnak ? state.anak.get(e.kode).length : 0;
     const bawah = bertingkat ? "" :
       `<div class="baris-bawah">${amanHTML(namaTingkat(e.digit))} · ${amanHTML(T("rinci.halamanCetak"))} ${e.halaman}</div>`;
+
+    const panah = !bertingkat ? "" : punyaAnak
+      ? `<button type="button" class="buka" data-buka="${amanHTML(e.kode)}" tabindex="-1"` +
+        ` aria-expanded="${terbuka}"` +
+        ` aria-label="${amanHTML(T(terbuka ? "cabang.tutup" : "cabang.buka", { kode: e.kode }))}">` +
+        PANAH + (jumlahAnak ? `<span class="buka-jumlah">${jumlahAnak}</span>` : "") + "</button>"
+      : '<span class="buka buka-kosong" aria-hidden="true"></span>';
+
     return (
-      `<button class="baris${state.terpilih === e.kode ? " terpilih" : ""}" role="treeitem"` +
-      ` data-kode="${amanHTML(e.kode)}" data-digit="${e.digit}" data-inden="${inden}"` +
-      (punyaAnak && bertingkat ? ` aria-expanded="${terbuka}"` : "") + ">" +
+      `<div class="larik${state.terpilih === e.kode ? " terpilih" : ""}" role="treeitem"` +
+      ` data-inden="${inden}" data-digit="${e.digit}"` +
+      (punyaAnak && bertingkat ? ` aria-expanded="${terbuka}"` : "") + ">" + panah +
+      `<button type="button" class="baris" data-kode="${amanHTML(e.kode)}">` +
       '<span class="baris-atas">' +
-      (bertingkat ? `<span class="buka" aria-hidden="true">${tanda}</span>` : "") +
       `<span class="kode">${amanHTML(e.kode)}</span>` +
       `<span class="baris-nama">${sorot(e.nama, kunci)}</span>` +
       (e.sisa ? `<span class="lencana lencana-sisa">${amanHTML(T("rinci.kelompokSisa"))}</span>` : "") +
-      "</span>" + bawah + "</button>"
+      "</span>" + bawah + "</button></div>"
     );
   }
 
@@ -355,7 +386,7 @@
     state.terpilih = kode;
     for (const k of leluhur(kode)) state.terbuka.add(k);
     gambarDaftar();
-    const aktif = daftarEl.querySelector(".baris.terpilih");
+    const aktif = daftarEl.querySelector(".larik.terpilih");
     if (aktif) aktif.scrollIntoView({ block: "nearest" });
 
     if (dorongRiwayat) {
@@ -470,17 +501,45 @@
 
   // ---------------------------------------------------------------- peristiwa
 
+  function alihkanCabang(kode) {
+    if (!state.anak.has(kode)) return;
+    state.terbuka.has(kode) ? state.terbuka.delete(kode) : state.terbuka.add(kode);
+    gambarDaftar();
+    const panah = daftarEl.querySelector(`[data-buka="${CSS.escape(kode)}"]`);
+    if (panah) panah.closest(".larik").querySelector(".baris").focus();
+  }
+
   daftarEl.addEventListener("click", (ev) => {
+    const panah = ev.target.closest("[data-buka]");
+    if (panah) { alihkanCabang(panah.dataset.buka); return; }
     const baris = ev.target.closest(".baris");
     if (!baris) return;
     const kode = baris.dataset.kode;
-    if (ev.target.closest(".buka") && state.anak.has(kode)) {
-      state.terbuka.has(kode) ? state.terbuka.delete(kode) : state.terbuka.add(kode);
-      gambarDaftar();
-      return;
-    }
     if (!state.kueri && state.anak.has(kode)) state.terbuka.add(kode);
     pilih(kode);
+  });
+
+  /* Navigasi papan ketik ala pohon: atas/bawah berpindah baris, kanan membuka cabang,
+     kiri menutup cabang atau naik ke induk. */
+  daftarEl.addEventListener("keydown", (ev) => {
+    const baris = ev.target.closest(".baris");
+    if (!baris) return;
+    const kode = baris.dataset.kode;
+    const semua = [...daftarEl.querySelectorAll(".baris")];
+    const i = semua.indexOf(baris);
+
+    if (ev.key === "ArrowDown" && i < semua.length - 1) { ev.preventDefault(); semua[i + 1].focus(); }
+    else if (ev.key === "ArrowUp" && i > 0) { ev.preventDefault(); semua[i - 1].focus(); }
+    else if (ev.key === "ArrowRight") {
+      if (state.anak.has(kode) && !state.terbuka.has(kode)) { ev.preventDefault(); alihkanCabang(kode); }
+    } else if (ev.key === "ArrowLeft") {
+      ev.preventDefault();
+      if (state.terbuka.has(kode)) alihkanCabang(kode);
+      else {
+        const naik = daftarEl.querySelector(`.baris[data-kode="${CSS.escape(induk(kode))}"]`);
+        if (naik) naik.focus();
+      }
+    }
   });
 
   rinciEl.addEventListener("click", (ev) => {

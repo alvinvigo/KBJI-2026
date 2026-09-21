@@ -2,6 +2,31 @@
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/).
 
+## [2.3.0] — 2026-09-21
+
+### Ditambahkan
+- **Panah cabang menjadi kendali sungguhan.** Setiap baris pohon kini terdiri dari dua tombol
+  terpisah: panah untuk membuka cabang dan isi baris untuk membuka rincian. Panah berukuran penuh
+  tinggi baris (2 rem pada tetikus, 2,75 rem pada layar sentuh), berputar 90° saat terbuka, punya
+  keadaan tunjuk dan tekan, serta menampilkan jumlah anak saat cabang tertutup.
+- **Navigasi papan ketik ala pohon**: panah atas dan bawah berpindah baris, kanan membuka cabang,
+  kiri menutup cabang atau naik ke induk.
+- Efek kaca dimatikan sebagai bawaan pada perangkat dengan inti atau memori sedikit. Pilihan
+  pengguna yang tersimpan selalu menang atas tebakan ini.
+
+### Diubah — beban render
+- Permukaan yang diburamkan dikurangi dari 17 menjadi 4; hanya 2 yang aktif saat menggulir biasa.
+  Panel, kartu, cip, dan tombol preferensi kini memakai tembus pandang saja, karena latar di
+  belakangnya gradien tetap sehingga buram tidak menambah apa pun secara visual.
+- Jari-jari buram diturunkan dari 20 px menjadi 14 px.
+- `contain: paint` pada daftar dan panel rincian membatasi luas penggambaran ulang.
+- Jumlah turunan diprakomputasi sekali saat muat. Sebelumnya setiap pembukaan entri memindai
+  3.010 baris lima kali.
+
+### Diperbaiki
+- Tembolok aset diturunkan dari 24 jam menjadi validasi ulang tiap permintaan untuk HTML, CSS, dan
+  JS. Sebelumnya pengguna lama dapat melihat antarmuka usang sampai sehari sesudah penyebaran.
+
 ## [2.2.0] — 2026-09-21
 
 ### Ditambahkan
