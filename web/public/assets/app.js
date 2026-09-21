@@ -91,9 +91,23 @@
   async function muatBlok(kode) {
     const nama = namaBlok(kode);
     if (!blokCache.has(nama)) {
-      const res = await fetch(`/data/blok/${nama}.json`);
-      if (!res.ok) throw new Error(`Blok ${nama} tidak dapat dimuat.`);
-      blokCache.set(nama, await res.json());
+      let res;
+      try {
+        res = await fetch(`/data/blok/${nama}.json`);
+      } catch (_) {
+        throw new Error("Koneksi terputus saat memuat rincian. Periksa jaringan, lalu coba lagi.");
+      }
+      if (!res.ok) {
+        throw new Error(
+          `Rincian untuk blok ${nama} tidak dapat dimuat (HTTP ${res.status}). ` +
+          "Bila situs baru saja diperbarui, muat ulang halaman dengan Ctrl+F5."
+        );
+      }
+      try {
+        blokCache.set(nama, await res.json());
+      } catch (_) {
+        throw new Error(`Berkas blok ${nama} tidak berbentuk JSON yang sah. Muat ulang dengan Ctrl+F5.`);
+      }
     }
     return blokCache.get(nama).find((r) => r.kode === kode) || null;
   }
@@ -125,7 +139,7 @@
       terapkanRute();
     } catch (kesalahan) {
       daftarEl.innerHTML =
-        '<p class="kosong">Data gagal dimuat. Muat ulang halaman, atau periksa koneksi.<br><small>' +
+        '<p class="kosong">Data gagal dimuat. Muat ulang dengan Ctrl+F5, atau periksa koneksi.<br><small>' +
         amanHTML(String(kesalahan.message || kesalahan)) + "</small></p>";
     }
   }

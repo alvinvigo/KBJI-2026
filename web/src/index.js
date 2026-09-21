@@ -307,10 +307,17 @@ export default {
       }
     }
 
-    // Berkas statis; jalur yang tidak cocok dikembalikan ke halaman utama agar
-    // tautan dalam seperti /kode/2521.01 dapat dibuka langsung.
     const aset = await env.ASSETS.fetch(request);
     if (aset.status !== 404) return aset;
+
+    // Berkas data dan aset yang hilang harus tetap 404. Mengembalikan halaman utama
+    // di sini akan menyamarkan penyebaran yang tidak lengkap menjadi galat penguraian JSON.
+    if (url.pathname.startsWith("/data/") || url.pathname.startsWith("/assets/")) {
+      return galat(404, `Berkas ${url.pathname} tidak ada pada penyebaran ini.`);
+    }
+
+    // Sisanya dianggap permintaan navigasi, dikembalikan ke halaman utama agar
+    // tautan dalam seperti /kode/2521.01 dapat dibuka langsung.
     const beranda = await ambilAset(env, request, "/index.html");
     return beranda
       ? new Response(beranda.body, { status: 200, headers: beranda.headers })
