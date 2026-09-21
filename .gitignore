@@ -1,0 +1,20 @@
+# Lingkungan Python
+.venv/
+__pycache__/
+*.pyc
+
+# PDF sumber tidak pernah dikomit: berhak cipta BPS dan berukuran ~30 MB.
+# Unduh dari situs resmi BPS, lalu letakkan di input/.
+*.pdf
+
+# Folder hasil percobaan
+output_baru*/
+output_uji*/
+validasi_ulang*/
+.validasi*/
+
+# Node dan Cloudflare
+node_modules/
+.wrangler/
+.dev.vars
+.env

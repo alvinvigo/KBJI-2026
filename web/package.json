@@ -1,0 +1,19 @@
+{
+  "name": "kbji-2026-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Situs referensi dan API JSON untuk KBJI 2026 di Cloudflare Workers.",
+  "scripts": {
+    "data": "python ../web/bangun_data.py",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.42.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260918.1": true
+  }
+}

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: >-
+  Kutip publikasi aslinya, bukan repositori ini. Repositori ini adalah
+  transkripsi teknis dan bukan rilis resmi BPS maupun Kementerian
+  Ketenagakerjaan Republik Indonesia.
+title: "KBJI 2026 — transkripsi terverifikasi ke CSV, JSON, dan API"
+abstract: >-
+  Alat ekstraksi berbasis tata letak yang mentranskripsi publikasi Klasifikasi
+  Baku Jabatan Indonesia (KBJI) 2026 Volume 1 menjadi CSV dan JSON hierarkis,
+  beserta situs referensi dan API JSON. Memuat 3.010 entri: 10 golongan pokok,
+  43 subgolongan pokok, 130 golongan, 447 subgolongan, dan 2.380 jabatan.
+type: software
+license: MIT
+license-url: "https://github.com/alvinvigo/KBJI-2026/blob/main/LICENSE"
+repository-code: "https://github.com/alvinvigo/KBJI-2026"
+version: "2.0.0"
+date-released: "2026-09-21"
+keywords:
+  - KBJI
+  - klasifikasi jabatan
+  - ketenagakerjaan
+  - Indonesia
+  - ISCO-08
+authors:
+  - name: "KBJI 2026 Open Source Contributors"
+references:
+  - type: report
+    title: "Klasifikasi Baku Jabatan Indonesia (KBJI) 2026, Volume 1"
+    year: 2026
+    publisher:
+      name: "Badan Pusat Statistik"
+    institution:
+      name: "Badan Pusat Statistik dan Kementerian Ketenagakerjaan Republik Indonesia"
+    notes: "Katalog 1302037; Nomor Publikasi 03100.26011; hak cipta Badan Pusat Statistik."

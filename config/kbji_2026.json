@@ -1,0 +1,108 @@
+{
+  "version": "2026",
+  "publikasi": "Klasifikasi Baku Jabatan Indonesia (KBJI) 2026, Volume 1, 2026",
+  "penerbit": "Badan Pusat Statistik dan Kementerian Ketenagakerjaan Republik Indonesia",
+  "katalog": "1302037",
+  "nomor_publikasi": "03100.26011",
+  "source_sha256": "19690c6c53f386ecd3f1f057a6159c06ad7bf87ec597f3e07cc7b83d426b43cf",
+  "pdf_pages": 1110,
+
+  "body_start": 103,
+  "body_end": 1108,
+  "toc_start": 11,
+  "toc_end": 26,
+  "printed_page_offset": 32,
+  "body_top": 42,
+  "body_bottom": 670,
+  "code_max_x": 85,
+  "toc_code_max_x": 100,
+  "divider_max_chars": 120,
+
+  "acuan_publikasi": {
+    "rujukan_total": "Tabel 3, halaman cetak 13 / halaman PDF 45",
+    "jumlah_total": {
+      "1": 10,
+      "2": 43,
+      "3": 130,
+      "4": 449,
+      "6": 2380
+    },
+    "rujukan_per_golongan_pokok": "Tabel 25-34 Jumlah Kode berdasarkan Struktur KBJI Golongan Pokok {golongan_pokok}, halaman cetak 61-65 / halaman PDF 93-97",
+    "jumlah_per_golongan_pokok": {
+      "0": [1, 3, 3, 15, 201],
+      "1": [1, 4, 11, 31, 210],
+      "2": [1, 6, 27, 94, 593],
+      "3": [1, 5, 20, 83, 410],
+      "4": [1, 4, 8, 29, 89],
+      "5": [1, 4, 13, 39, 142],
+      "6": [1, 3, 9, 19, 84],
+      "7": [1, 5, 14, 66, 317],
+      "8": [1, 3, 14, 40, 216],
+      "9": [1, 6, 11, 33, 118]
+    }
+  },
+
+  "selisih_sumber_terverifikasi": [
+    {
+      "tingkat_digit": 4,
+      "golongan_pokok": "",
+      "acuan_publikasi": 449,
+      "hasil_terverifikasi": 447,
+      "bukti": "Daftar Isi (halaman PDF 11-26) memuat 447 kode subgolongan; bagian uraian (halaman PDF 103-1108) memuat 447 judul subgolongan; pemindaian seluruh span pada kolom kode menemukan 447 kode empat digit. Angka 449 hanya muncul pada narasi halaman PDF 44, Tabel 3 halaman PDF 45, dan Tabel 19 halaman PDF 86."
+    },
+    {
+      "tingkat_digit": 4,
+      "golongan_pokok": "2",
+      "acuan_publikasi": 94,
+      "hasil_terverifikasi": 93,
+      "bukti": "Tabel 27 (halaman PDF 94) dan narasi halaman PDF 93 menyebut 94 subgolongan, sedangkan Daftar Isi dan bagian uraian sama-sama memuat 93 kode empat digit pada golongan pokok 2."
+    },
+    {
+      "tingkat_digit": 4,
+      "golongan_pokok": "6",
+      "acuan_publikasi": 19,
+      "hasil_terverifikasi": 18,
+      "bukti": "Tabel 31 (halaman PDF 96) dan narasi halaman PDF 96 menyebut 19 subgolongan, sedangkan Daftar Isi dan bagian uraian sama-sama memuat 18 kode empat digit pada golongan pokok 6."
+    }
+  ],
+
+  "tingkat_keterampilan": [
+    {"golongan_pokok": "0", "nama": "Tentara Nasional Indonesia (TNI) dan Kepolisian Negara Republik Indonesia (Polri)", "tingkat_keterampilan": "1 + 2 + 4", "catatan_sumber": ""},
+    {"golongan_pokok": "1", "nama": "Manajer", "tingkat_keterampilan": "3 + 4", "catatan_sumber": ""},
+    {"golongan_pokok": "2", "nama": "Profesional", "tingkat_keterampilan": "4", "catatan_sumber": ""},
+    {"golongan_pokok": "3", "nama": "Teknisi dan Asisten Profesional", "tingkat_keterampilan": "3", "catatan_sumber": ""},
+    {"golongan_pokok": "4", "nama": "Tenaga Tata Usaha", "tingkat_keterampilan": "2", "catatan_sumber": ""},
+    {"golongan_pokok": "5", "nama": "Tenaga Usaha Jasa dan Tenaga Penjualan", "tingkat_keterampilan": "", "catatan_sumber": "Sel kolom tingkat keterampilan kosong pada Tabel 1 sumber; tidak diisi agar tidak menambah data yang tidak tercetak."},
+    {"golongan_pokok": "6", "nama": "Pekerja Terampil Pertanian, Kehutanan, dan Perikanan", "tingkat_keterampilan": "", "catatan_sumber": "Sel kolom tingkat keterampilan kosong pada Tabel 1 sumber; tidak diisi agar tidak menambah data yang tidak tercetak."},
+    {"golongan_pokok": "7", "nama": "Pekerja Pengolahan, Kerajinan, dan YBDI", "tingkat_keterampilan": "", "catatan_sumber": "Sel kolom tingkat keterampilan kosong pada Tabel 1 sumber; tidak diisi agar tidak menambah data yang tidak tercetak."},
+    {"golongan_pokok": "8", "nama": "Operator dan Perakit Mesin", "tingkat_keterampilan": "", "catatan_sumber": "Sel kolom tingkat keterampilan kosong pada Tabel 1 sumber; tidak diisi agar tidak menambah data yang tidak tercetak."},
+    {"golongan_pokok": "9", "nama": "Pekerja Kasar", "tingkat_keterampilan": "1", "catatan_sumber": ""}
+  ],
+  "rujukan_tingkat_keterampilan": "Tabel 1 Hubungan antara Tingkat Keterampilan dengan KBJI 2026, halaman cetak 6 / halaman PDF 38",
+
+  "reviewed_noncontent_pages": {
+    "159": "pembatas_bab_diperiksa_visual",
+    "160": "halaman_kosong_diperiksa_visual",
+    "260": "halaman_kosong_diperiksa_visual",
+    "261": "pembatas_bab_diperiksa_visual",
+    "262": "halaman_kosong_diperiksa_visual",
+    "509": "pembatas_bab_diperiksa_visual",
+    "510": "halaman_kosong_diperiksa_visual",
+    "714": "halaman_kosong_diperiksa_visual",
+    "715": "pembatas_bab_diperiksa_visual",
+    "716": "halaman_kosong_diperiksa_visual",
+    "757": "pembatas_bab_diperiksa_visual",
+    "758": "halaman_kosong_diperiksa_visual",
+    "823": "pembatas_bab_diperiksa_visual",
+    "824": "halaman_kosong_diperiksa_visual",
+    "868": "halaman_kosong_diperiksa_visual",
+    "869": "pembatas_bab_diperiksa_visual",
+    "870": "halaman_kosong_diperiksa_visual",
+    "966": "halaman_kosong_diperiksa_visual",
+    "967": "pembatas_bab_diperiksa_visual",
+    "968": "halaman_kosong_diperiksa_visual",
+    "1054": "halaman_kosong_diperiksa_visual",
+    "1055": "pembatas_bab_diperiksa_visual",
+    "1056": "halaman_kosong_diperiksa_visual"
+  }
+}

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KBJI 2026 — Klasifikasi Baku Jabatan Indonesia</title>
+<meta name="description" content="Penelusuran Klasifikasi Baku Jabatan Indonesia (KBJI) 2026: 10 golongan pokok, 43 subgolongan pokok, 130 golongan, 447 subgolongan, dan 2.380 jabatan, lengkap dengan uraian dan rujukan halaman publikasi.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="KBJI 2026 — Klasifikasi Baku Jabatan Indonesia">
+<meta property="og:description" content="Penelusuran dan API terbuka untuk KBJI 2026. Transkripsi teknis dari publikasi BPS dan Kementerian Ketenagakerjaan.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EKB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<a class="lewati" href="#utama">Lewati ke konten</a>
+
+<header class="kepala">
+  <div class="bungkus kepala-isi">
+    <div class="merek">
+      <span class="merek-lambang" aria-hidden="true">KB</span>
+      <div>
+        <h1>KBJI 2026</h1>
+        <p class="merek-sub">Klasifikasi Baku Jabatan Indonesia</p>
+      </div>
+    </div>
+    <div class="kepala-aksi">
+      <a class="tombol-teks" href="/api/v1">API</a>
+      <a class="tombol-teks" href="#tentang">Tentang</a>
+      <button class="tombol-ikon" id="tombol-tema" type="button" aria-label="Ganti tema terang atau gelap">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="bungkus">
+  <section class="maklumat" aria-label="Catatan penting">
+    <p>
+      <strong>Catatan sumber.</strong> Publikasi menyebut <strong>449</strong> subgolongan pada Tabel 3,
+      sedangkan Daftar Isi dan bagian uraian sama-sama memuat <strong>447</strong>. Selisih ini berasal dari
+      dokumen sumber, bukan dari proses transkripsi, dan tidak ditutup dengan menambahkan kode.
+      <a href="#tentang">Rincian buktinya.</a>
+    </p>
+    <p class="maklumat-kecil">
+      Situs ini proyek sumber terbuka berisi transkripsi teknis dari publikasi KBJI 2026.
+      Bukan penerbitan resmi KBJI 2026 dan tidak mewakili lembaga mana pun &mdash; penerbitan resminya
+      adalah publikasi Badan Pusat Statistik, dan rujukan sahih tetap publikasi aslinya.
+    </p>
+  </section>
+</div>
+
+<main id="utama" class="bungkus">
+  <form class="pencarian" id="borang-cari" role="search">
+    <label class="pencarian-medan">
+      <span class="lihat-saja-pembaca">Cari kode atau nama jabatan</span>
+      <input id="kotak-cari" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Cari nama jabatan atau kode, misalnya: analis data, 2521, guru">
+    </label>
+    <div class="saringan" role="group" aria-label="Saring menurut tingkat">
+      <button type="button" class="cip aktif" data-tingkat="">Semua</button>
+      <button type="button" class="cip" data-tingkat="1">Golongan pokok</button>
+      <button type="button" class="cip" data-tingkat="2">Subgolongan pokok</button>
+      <button type="button" class="cip" data-tingkat="3">Golongan</button>
+      <button type="button" class="cip" data-tingkat="4">Subgolongan</button>
+      <button type="button" class="cip" data-tingkat="6">Jabatan</button>
+    </div>
+  </form>
+
+  <div class="tata-letak">
+    <section class="panel panel-daftar" aria-label="Penelusuran dan hasil pencarian">
+      <div class="panel-kepala">
+        <h2 id="judul-daftar">Telusuri hierarki</h2>
+        <span class="jumlah" id="jumlah-daftar"></span>
+      </div>
+      <div id="daftar" class="daftar" tabindex="-1"></div>
+    </section>
+
+    <section class="panel panel-rinci" aria-label="Rincian entri" aria-live="polite">
+      <div id="rinci"></div>
+    </section>
+  </div>
+
+  <section id="tentang" class="tentang">
+    <h2>Tentang data ini</h2>
+
+    <div class="kartu-baris" id="ringkas-jumlah"></div>
+
+    <h3>Mengapa 447, bukan 449</h3>
+    <p>
+      Empat pemeriksaan yang tidak saling bergantung menghasilkan angka yang sama, yaitu 447 subgolongan:
+      Daftar Isi publikasi (halaman PDF 11–26); judul pada bagian uraian (halaman PDF 103–1108);
+      pemindaian seluruh fragmen teks pada kolom kode tanpa memakai aturan huruf tebal; serta daftar kode
+      anak yang tercantum di dalam uraian induk, yaitu 584 rujukan dari 173 entri induk yang seluruhnya
+      memiliki judul sendiri.
+    </p>
+    <p>
+      Untuk seluruh 630 kode tingkat 1–4 digit, Daftar Isi dan bagian uraian cocok pada kode, nama, dan
+      nomor halaman cetak sekaligus, tanpa satu pun perbedaan. Angka 449 hanya muncul pada narasi halaman
+      PDF 44, Tabel 3 (halaman PDF 45), dan Tabel 19 (halaman PDF 86). Selisihnya terletak pada golongan
+      pokok 2 (93 berbanding 94, Tabel 27) dan golongan pokok 6 (18 berbanding 19, Tabel 31).
+    </p>
+    <p>
+      Hal ini perlu dikonfirmasikan kepada tim penyusun. Sampai ada keputusan penyusun, data di sini
+      memuat 447 subgolongan karena itulah yang tercetak.
+    </p>
+
+    <h3>Cara memakai</h3>
+    <ul>
+      <li>Kolom <code>uraian_resmi</code> memuat tugas, contoh jabatan, dan pengecualian. Kesamaan judul saja sering tidak cukup untuk menetapkan kode.</li>
+      <li>Kode bertanda <span class="lencana lencana-sisa">kelompok sisa</span> adalah kode “lainnya” atau “YTDL”. Pakai hanya bila tidak ada kode yang lebih spesifik.</li>
+      <li>Setiap entri mencantumkan nomor halaman cetak dan halaman PDF agar dapat dirujuk balik ke publikasi.</li>
+      <li>Seluruh data juga tersedia sebagai <a href="/api/v1">API JSON terbuka</a> tanpa autentikasi.</li>
+    </ul>
+
+    <h3>Ketentuan</h3>
+    <p id="ketentuan-teks">
+      Isi KBJI 2026 adalah hak cipta Badan Pusat Statistik. Halaman hak cipta publikasi menyatakan:
+      dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku untuk tujuan komersial
+      tanpa izin tertulis dari Badan Pusat Statistik. Ketentuan itu berlaku juga atas data pada situs ini.
+      Kode program situs dan alat ekstraksinya dilisensikan terpisah dengan lisensi MIT.
+    </p>
+
+    <dl class="meta-daftar" id="meta-daftar"></dl>
+  </section>
+</main>
+
+<footer class="kaki">
+  <div class="bungkus">
+    <p>
+      Sumber: <strong>Klasifikasi Baku Jabatan Indonesia (KBJI) 2026, Volume 1</strong> —
+      Badan Pusat Statistik dan Kementerian Ketenagakerjaan Republik Indonesia.
+      Katalog 1302037, nomor publikasi 03100.26011.
+    </p>
+    <p>
+      Proyek sumber terbuka. Bukan penerbitan resmi KBJI 2026.
+      <a href="https://github.com/alvinvigo/KBJI-2026">Kode sumber dan data</a> &middot;
+      <a href="https://github.com/alvinvigo/KBJI-2026/blob/main/KETENTUAN_DATA.md">Ketentuan penggunaan</a>
+    </p>
+    <p class="kaki-kecil" id="kaki-meta"></p>
+  </div>
+</footer>
+
+<script src="/assets/app.js" defer></script>
+</body>
+</html>

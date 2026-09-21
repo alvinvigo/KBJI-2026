@@ -1,0 +1,99 @@
+name: Uji
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Uji regresi dan validasi ulang CSV
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Pengujian regresi
+        run: python -m unittest discover -s tests -v
+
+      - name: Validasi ulang CSV hasil
+        shell: bash
+        run: |
+          set +e
+          python kbji.py validate --csv output/kbji_2026_hierarki.csv --out .validasi-ci
+          kode=$?
+          set -e
+          echo "Exit code: $kode"
+          # 3 = ekstraksi lengkap dan konsisten; yang tersisa adalah ketidaksesuaian
+          # di dalam dokumen sumber (447 berbanding 449 subgolongan).
+          if [ "$kode" -ne 3 ]; then
+            echo "::error::Diharapkan exit code 3, diperoleh $kode."
+            cat .validasi-ci/LAPORAN_VALIDASI.md || true
+            exit 1
+          fi
+
+      - name: Pastikan tidak ada temuan berkelas ekstraksi
+        run: |
+          python - <<'PY'
+          import csv, sys
+          baris = list(csv.DictReader(open('.validasi-ci/semua_temuan.csv', encoding='utf-8-sig')))
+          cacat = [b for b in baris if b['kelas'] == 'ekstraksi']
+          for b in cacat:
+              print(f"::error::{b['kategori']} {b['kode']} {b['detail']}")
+          print(f"Temuan ekstraksi: {len(cacat)}; temuan sumber/informasi: {len(baris) - len(cacat)}")
+          sys.exit(1 if cacat else 0)
+          PY
+
+      - name: Jumlah entri sesuai
+        run: |
+          python - <<'PY'
+          import collections, csv, sys
+          baris = list(csv.DictReader(open('output/kbji_2026_hierarki.csv', encoding='utf-8-sig')))
+          jumlah = collections.Counter(b['jumlah_digit'] for b in baris)
+          diharapkan = {'1': 10, '2': 43, '3': 130, '4': 447, '6': 2380}
+          print(dict(sorted(jumlah.items())))
+          assert len(baris) == 3010, f'Total entri {len(baris)}, seharusnya 3010.'
+          assert dict(jumlah) == diharapkan, f'Jumlah per tingkat berubah: {dict(jumlah)}'
+          print('Jumlah entri sesuai.')
+          PY
+
+  web:
+    name: Bangun data web dan periksa Worker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Bangun ulang data web dan pastikan sama dengan yang dikomit
+        run: |
+          python web/bangun_data.py --out output --data /tmp/data-ci
+          diff -r --brief web/public/data /tmp/data-ci
+          echo "Data web yang dikomit sama dengan hasil pembangunan ulang."
+
+      - name: Pasang wrangler
+        working-directory: web
+        run: npm ci || npm install
+
+      - name: Periksa sintaks dan konfigurasi Worker
+        working-directory: web
+        run: |
+          node --check src/index.js
+          npx wrangler deploy --dry-run --outdir /tmp/worker-build
