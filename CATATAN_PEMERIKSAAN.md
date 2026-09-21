@@ -173,4 +173,4 @@ Diklasifikasikan otomatis dari isi PDF, bukan dari daftar manual, lalu dicocokka
 
 ## 6. Pernyataan
 
-Transkripsi ini adalah pekerjaan teknis atas publikasi resmi, bukan rilis resmi BPS maupun Kementerian Ketenagakerjaan. Isi resmi tetap merujuk pada publikasi cetak dan digital yang diterbitkan kedua lembaga tersebut. Setiap perbedaan antara berkas ini dan publikasi harus diselesaikan dengan memenangkan publikasi, dan dilaporkan agar dapat diperbaiki.
+Transkripsi ini pekerjaan teknis atas publikasi resmi dan merupakan proyek sumber terbuka. Bukan penerbitan resmi KBJI 2026 dan tidak mewakili lembaga mana pun. Isi resmi tetap merujuk pada publikasi cetak dan digital yang diterbitkan Badan Pusat Statistik bersama Kementerian Ketenagakerjaan. Setiap perbedaan antara berkas ini dan publikasi harus diselesaikan dengan memenangkan publikasi, dan dilaporkan agar dapat diperbaiki.

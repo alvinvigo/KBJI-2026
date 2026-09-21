@@ -334,7 +334,7 @@ Konsekuensinya, dan ini yang paling mudah keliru:
 
 1. **Kode program boleh berlisensi MIT. Data tidak boleh.** Lisensi MIT, Apache, maupun CC0 memberikan hak penggunaan komersial. Hak itu bukan milik Anda untuk diberikan. Karena itu `LICENSE` dibatasi tegas pada kode, dan `KETENTUAN_DATA.md` mengutip ketentuan BPS apa adanya tanpa menerbitkan lisensi baru atas isi KBJI.
 2. **PDF sumber tidak boleh dikomit.** Selain berukuran 30 MB, berkas itu adalah publikasi berhak cipta secara utuh. `.gitignore` sudah mengecualikan `*.pdf`. Ilustrasi kover bersumber dari Freepik.com dan Canva dan tidak ikut ditranskripsi.
-3. **Atribusi wajib terlihat**, bukan hanya di berkas lisensi. README, situs, dan tanggapan API semuanya mencantumkan sumber dan menegaskan bahwa ini bukan rilis resmi.
+3. **Atribusi wajib terlihat**, bukan hanya di berkas lisensi. README, situs, dan tanggapan API semuanya mencantumkan sumber dan menegaskan bahwa ini bukan penerbitan resmi KBJI 2026.
 4. **Sertakan selalu catatan selisih 447 vs 449.** Jangan menandai seluruh validasi lulus.
 5. **Sediakan jalur penghapusan.** `SECURITY.md` menjanjikan penghapusan dalam 7 hari kerja bila BPS atau Kementerian Ketenagakerjaan berkeberatan. Janji itu harus benar-benar ditepati.
 6. **Kirim pemberitahuan ke BPS.** Draf suratnya ada di `dokumen/surat-pemberitahuan-bps.md`. Surat itu sekaligus melaporkan ketidaksesuaian 447 vs 449, yang memang perlu diketahui penyusun. Biayanya nyaris nol dan risikonya hilang.
@@ -370,7 +370,7 @@ diisi sendiri:
 
 | Berkas | Isi | Kapan |
 |---|---|---|
-| `README.md` | `<SUBDOMAIN>` pada tautan situs dan contoh `curl` | Setelah Worker disebarkan (bagian 13) |
+| `README.md` | Alamat situs — sudah terisi `https://kbji-2026.sipk-paskerid.workers.dev` | Selesai |
 
 Tidak ada nama pribadi maupun nama instansi di dalam repositori. Pemegang hak cipta kode ditulis
 `KBJI 2026 Open Source Contributors`, dan pelaporan diarahkan ke kanal GitHub, bukan ke alamat surel.
@@ -521,19 +521,49 @@ Wrangler mengunggah 457 berkas aset dan satu skrip Worker, lalu menampilkan alam
 
 ### Langkah 7 — Verifikasi produksi
 
-```bash
-SITUS=https://kbji-2026.<subdomain>.workers.dev
-curl -s $SITUS/api/v1/meta | head -20
-curl -s "$SITUS/api/v1/kode/0111.01" | head -5
-curl -o /dev/null -w "%{http_code}\n" $SITUS/kode/2521.01
-curl -sI $SITUS/ | grep -i "content-security-policy"
+Alamat situs muncul di akhir keluaran `wrangler deploy` dan pada halaman Worker di dashboard.
+Untuk penyebaran ini: `https://kbji-2026.sipk-paskerid.workers.dev`.
+
+**Paling mudah: tempel alamatnya di peramban.** JSON tampil rapi di Chrome maupun Edge.
+
+**Windows PowerShell.** Tulis `curl.exe`, bukan `curl`. Di PowerShell, `curl` adalah alias
+`Invoke-WebRequest` yang sintaksnya berbeda, sehingga `curl -s ...` akan ditolak. Perintah asli
+PowerShell lebih nyaman karena JSON-nya langsung diurai:
+
+```powershell
+$situs = "https://kbji-2026.sipk-paskerid.workers.dev"
+Invoke-RestMethod "$situs/api/v1/meta"
+Invoke-RestMethod "$situs/api/v1/kode/0111.01"
+(Invoke-WebRequest "$situs/kode/2521.01").StatusCode
+(Invoke-WebRequest "$situs/").Headers["content-security-policy"]
 ```
+
+**Command Prompt (CMD).** Di sini `curl` memang curl asli:
+
+```bat
+curl -s https://kbji-2026.sipk-paskerid.workers.dev/api/v1/meta
+curl -s https://kbji-2026.sipk-paskerid.workers.dev/api/v1/kode/0111.01
+curl -o NUL -w "%{http_code}" https://kbji-2026.sipk-paskerid.workers.dev/kode/2521.01
+```
+
+**macOS/Linux:**
+
+```bash
+SITUS=https://kbji-2026.sipk-paskerid.workers.dev
+curl -s $SITUS/api/v1/meta | head -20
+curl -o /dev/null -w "%{http_code}
+" $SITUS/kode/2521.01
+```
+
+Jangan pernah menempelkan alamat yang masih memuat tanda kurung sudut seperti `<subdomain>`.
+Di CMD dan PowerShell, `<` dan `>` adalah operator pengalihan berkas, sehingga perintahnya gagal
+dengan pesan sintaks, bukan karena situsnya bermasalah.
 
 Lalu buka situsnya, coba pencarian, buka satu entri, dan periksa tampilannya di ponsel.
 
 ### Langkah 8 — Isi alamatnya ke repositori
 
-Ganti `<SUBDOMAIN>` pada `README.md`, isi kolom **About → Website** di GitHub, komit, dan dorong.
+Alamat pada `README.md` sudah terisi: `https://kbji-2026.sipk-paskerid.workers.dev`. Isi juga kolom **About → Website** di halaman repositori GitHub.
 
 ### Langkah 9 (opsional) — Domain sendiri
 

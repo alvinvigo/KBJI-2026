@@ -66,6 +66,12 @@ python bangun_data.py          # membangun ulang public/data dari ../output
 npm run dev                    # http://127.0.0.1:8787
 ```
 
+Situs produksi: <https://kbji-2026.sipk-paskerid.workers.dev>
+
+Untuk mencoba titik akhir, cara paling mudah adalah menempelkan alamatnya di peramban. Bila memakai
+terminal Windows PowerShell, tulis `curl.exe`, bukan `curl` — `curl` di PowerShell adalah alias
+`Invoke-WebRequest` dengan sintaks berbeda. Di Command Prompt, `curl` berjalan apa adanya.
+
 `npm install` dapat memblokir skrip pemasangan `esbuild` dan `workerd` pada npm versi baru. Bila
 `wrangler dev` gagal menyalakan runtime, jalankan:
 
@@ -81,7 +87,7 @@ npx wrangler deploy
 ```
 
 Langkah lengkapnya, termasuk penyebaran otomatis dari GitHub dan pemasangan domain sendiri, ada pada
-[Panduan_KBJI_2026.md](../Panduan_KBJI_2026.md) bagian 14.
+[Panduan_KBJI_2026.md](../Panduan_KBJI_2026.md) bagian 13.
 
 ## Bila data diperbarui
 
@@ -99,4 +105,4 @@ memeriksa bahwa isi folder itu sama dengan hasil pembangunan ulang.
 
 Kode Worker dan antarmuka: lisensi MIT, lihat [LICENSE](../LICENSE).
 Data KBJI 2026: hak cipta Badan Pusat Statistik, lihat [KETENTUAN_DATA.md](../KETENTUAN_DATA.md).
-Situs ini bukan rilis resmi BPS maupun Kementerian Ketenagakerjaan Republik Indonesia.
+Proyek sumber terbuka. Bukan penerbitan resmi KBJI 2026 dan tidak mewakili lembaga mana pun.

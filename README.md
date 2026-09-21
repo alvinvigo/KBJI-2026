@@ -11,7 +11,7 @@ situs penelusuran, dan API JSON terbuka.
 [![Data: ketentuan BPS](https://img.shields.io/badge/data-ketentuan%20BPS-orange.svg)](KETENTUAN_DATA.md)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB.svg)](https://www.python.org/downloads/)
 
-[Situs](https://<SUBDOMAIN>.workers.dev) · [API](https://<SUBDOMAIN>.workers.dev/api/v1) · [Panduan](Panduan_KBJI_2026.md) · [Kamus data](KAMUS_DATA.md) · [Catatan pemeriksaan](CATATAN_PEMERIKSAAN.md)
+[Situs](https://kbji-2026.sipk-paskerid.workers.dev) · [API](https://kbji-2026.sipk-paskerid.workers.dev/api/v1) · [Panduan](Panduan_KBJI_2026.md) · [Kamus data](KAMUS_DATA.md) · [Catatan pemeriksaan](CATATAN_PEMERIKSAAN.md)
 
 </div>
 
@@ -88,10 +88,20 @@ print(next(r for r in kbji if r['kode'] == '2521.01')['nama_resmi'])
 Baca-saja, tanpa autentikasi, CORS terbuka.
 
 ```bash
-curl https://<SUBDOMAIN>.workers.dev/api/v1/kode/2521.01
-curl "https://<SUBDOMAIN>.workers.dev/api/v1/cari?q=analis%20data&tingkat=6"
-curl https://<SUBDOMAIN>.workers.dev/api/v1/anak/252
+curl https://kbji-2026.sipk-paskerid.workers.dev/api/v1/kode/2521.01
+curl "https://kbji-2026.sipk-paskerid.workers.dev/api/v1/cari?q=analis%20data&tingkat=6"
+curl https://kbji-2026.sipk-paskerid.workers.dev/api/v1/anak/252
 ```
+
+Di **Windows PowerShell** tulis `curl.exe`, bukan `curl` — `curl` di PowerShell adalah alias
+`Invoke-WebRequest` yang sintaksnya berbeda. Atau pakai perintah asli PowerShell:
+
+```powershell
+Invoke-RestMethod https://kbji-2026.sipk-paskerid.workers.dev/api/v1/kode/2521.01
+```
+
+Di **Command Prompt (CMD)** perintah `curl` di atas berjalan apa adanya. Cara paling mudah:
+tempel saja alamatnya di peramban.
 
 | Titik akhir | Keterangan |
 |---|---|
