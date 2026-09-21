@@ -2,6 +2,26 @@
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/).
 
+## [2.1.0] — 2026-09-21
+
+### Ditambahkan
+- **Dua bahasa, Indonesia dan Inggris.** Hanya teks antarmuka yang berpindah bahasa; kode, nama
+  resmi, dan uraian tetap dalam bahasa Indonesia sesuai publikasi. Nama tingkat dalam bahasa
+  Inggris memakai padanan ISCO-08 (major/sub-major/minor/unit group), bukan terjemahan resmi KBJI.
+- **Panel Preferensi & Aksesibilitas**: bahasa, tema (sistem/terang/gelap), ukuran teks tiga
+  tingkat, kontras tinggi, spasi baca lega untuk pembaca disleksia, garis bawah tautan, dan
+  kurangi animasi. Tersimpan di peramban, dengan jebakan fokus dan tutup lewat Esc.
+- **Rel posisi hierarki** pada panel rincian: kelima tingkat selalu terlihat. Leluhur dapat diklik,
+  posisi kini ditandai, dan tingkat di bawahnya menampilkan jumlah turunan.
+- **Bagian "Rincian di bawahnya"**: ringkasan jumlah per tingkat dan daftar entri langsung beserta
+  jumlah anaknya masing-masing.
+
+### Diubah
+- Palet dan tipografi disesuaikan bernuansa Karirhub — Kementerian Ketenagakerjaan.
+- Seluruh ukuran memakai satuan `rem` agar preferensi ukuran teks pengguna bekerja.
+- Berkas data dan aset yang hilang membalas 404 apa adanya, tidak lagi dikembalikan ke halaman utama.
+- Dokumentasi dirampingkan dari 11.376 menjadi 7.485 kata; draf surat internal dikeluarkan dari repositori.
+
 ## [2.0.0] — 2026-09-21
 
 ### Ditambahkan

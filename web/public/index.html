@@ -4,122 +4,113 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KBJI 2026 — Klasifikasi Baku Jabatan Indonesia</title>
-<meta name="description" content="Penelusuran Klasifikasi Baku Jabatan Indonesia (KBJI) 2026: 10 golongan pokok, 43 subgolongan pokok, 130 golongan, 447 subgolongan, dan 2.380 jabatan, lengkap dengan uraian dan rujukan halaman publikasi.">
+<meta name="description" content="Penelusuran Klasifikasi Baku Jabatan Indonesia (KBJI) 2026: 10 golongan pokok, 43 subgolongan pokok, 130 golongan, 447 subgolongan, dan 2.380 jabatan, lengkap dengan uraian resmi dan rujukan halaman publikasi.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="KBJI 2026 — Klasifikasi Baku Jabatan Indonesia">
 <meta property="og:description" content="Penelusuran dan API terbuka untuk KBJI 2026. Transkripsi teknis dari publikasi BPS dan Kementerian Ketenagakerjaan.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EKB%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b60ea'/%3E%3Cpath d='M9 8h3.4v6.6L18 8h4.2l-6.4 7.5L22.6 24h-4.3l-4.6-6.2-1.3 1.5V24H9z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/assets/app.css">
 </head>
 <body>
-<a class="lewati" href="#utama">Lewati ke konten</a>
+<a class="lewati" href="#utama" data-i18n="lewati">Lewati ke konten utama</a>
 
 <header class="kepala">
   <div class="bungkus kepala-isi">
-    <div class="merek">
-      <span class="merek-lambang" aria-hidden="true">KB</span>
-      <div>
-        <h1>KBJI 2026</h1>
-        <p class="merek-sub">Klasifikasi Baku Jabatan Indonesia</p>
-      </div>
-    </div>
-    <div class="kepala-aksi">
-      <a class="tombol-teks" href="/api/v1">API</a>
-      <a class="tombol-teks" href="#tentang">Tentang</a>
-      <button class="tombol-ikon" id="tombol-tema" type="button" aria-label="Ganti tema terang atau gelap">
-        <span aria-hidden="true">◐</span>
+    <a class="merek" href="/">
+      <span class="merek-lambang" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="34" height="34"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M9 8h3.4v6.6L18 8h4.2l-6.4 7.5L22.6 24h-4.3l-4.6-6.2-1.3 1.5V24H9z" fill="#fff"/></svg>
+      </span>
+      <span class="merek-teks">
+        <strong data-i18n="app.nama">KBJI 2026</strong>
+        <span class="merek-sub" data-i18n="app.sub">Klasifikasi Baku Jabatan Indonesia</span>
+      </span>
+    </a>
+    <nav class="kepala-aksi" aria-label="Navigasi utama">
+      <a class="tombol-teks" href="/api/v1" data-i18n="nav.api">API</a>
+      <a class="tombol-teks" href="#tentang" data-i18n="nav.tentang">Tentang</a>
+      <button class="tombol-pref" id="buka-pref" type="button" aria-haspopup="dialog" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span data-i18n="nav.preferensi">Preferensi</span>
+        <span class="lencana-bahasa" id="lencana-bahasa">ID</span>
       </button>
-    </div>
+    </nav>
   </div>
 </header>
 
 <div class="bungkus">
-  <section class="maklumat" aria-label="Catatan penting">
-    <p>
-      <strong>Catatan sumber.</strong> Publikasi menyebut <strong>449</strong> subgolongan pada Tabel 3,
-      sedangkan Daftar Isi dan bagian uraian sama-sama memuat <strong>447</strong>. Selisih ini berasal dari
-      dokumen sumber, bukan dari proses transkripsi, dan tidak ditutup dengan menambahkan kode.
-      <a href="#tentang">Rincian buktinya.</a>
-    </p>
-    <p class="maklumat-kecil">
-      Situs ini proyek sumber terbuka berisi transkripsi teknis dari publikasi KBJI 2026.
-      Bukan penerbitan resmi KBJI 2026 dan tidak mewakili lembaga mana pun &mdash; penerbitan resminya
-      adalah publikasi Badan Pusat Statistik, dan rujukan sahih tetap publikasi aslinya.
-    </p>
+  <section class="maklumat" id="maklumat" aria-label="Catatan penting">
+    <div class="maklumat-ikon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/>
+      </svg>
+    </div>
+    <div class="maklumat-isi">
+      <p><strong data-i18n="maklumat.judul">Catatan sumber.</strong>
+        <span data-i18n="maklumat.isi">Publikasi menyebut 449 subgolongan pada Tabel 3, sedangkan Daftar Isi dan bagian uraian sama-sama memuat 447. Selisih ini berasal dari dokumen sumber, bukan dari proses transkripsi, dan tidak ditutup dengan menambahkan kode.</span>
+        <a href="#tentang" data-i18n="maklumat.tautan">Lihat buktinya</a>.</p>
+      <p class="maklumat-kecil" data-i18n="maklumat.kecil">Proyek sumber terbuka berisi transkripsi teknis dari publikasi KBJI 2026. Bukan penerbitan resmi dan tidak mewakili lembaga mana pun.</p>
+    </div>
+    <button class="maklumat-tutup" id="tutup-maklumat" type="button" aria-label="Sembunyikan catatan" data-i18n-attr="aria-label:maklumat.tutup">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
   </section>
 </div>
 
 <main id="utama" class="bungkus">
   <form class="pencarian" id="borang-cari" role="search">
-    <label class="pencarian-medan">
-      <span class="lihat-saja-pembaca">Cari kode atau nama jabatan</span>
+    <div class="pencarian-kotak">
+      <svg class="pencarian-ikon" viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="lihat-saja-pembaca" for="kotak-cari" data-i18n="cari.label">Cari kode atau nama jabatan</label>
       <input id="kotak-cari" type="search" autocomplete="off" spellcheck="false"
-             placeholder="Cari nama jabatan atau kode, misalnya: analis data, 2521, guru">
-    </label>
-    <div class="saringan" role="group" aria-label="Saring menurut tingkat">
-      <button type="button" class="cip aktif" data-tingkat="">Semua</button>
-      <button type="button" class="cip" data-tingkat="1">Golongan pokok</button>
-      <button type="button" class="cip" data-tingkat="2">Subgolongan pokok</button>
-      <button type="button" class="cip" data-tingkat="3">Golongan</button>
-      <button type="button" class="cip" data-tingkat="4">Subgolongan</button>
-      <button type="button" class="cip" data-tingkat="6">Jabatan</button>
+             placeholder="Cari jabatan atau kode — misalnya: analis data, guru, 2521"
+             data-i18n-attr="placeholder:cari.placeholder">
+      <kbd class="pintasan" aria-hidden="true">/</kbd>
+    </div>
+    <div class="saringan" role="group" aria-label="Saring menurut tingkat" data-i18n-attr="aria-label:saring.label">
+      <button type="button" class="cip aktif" data-tingkat="" data-i18n="saring.semua">Semua tingkat</button>
+      <button type="button" class="cip" data-tingkat="1" data-i18n="tingkat.1">Golongan pokok</button>
+      <button type="button" class="cip" data-tingkat="2" data-i18n="tingkat.2">Subgolongan pokok</button>
+      <button type="button" class="cip" data-tingkat="3" data-i18n="tingkat.3">Golongan</button>
+      <button type="button" class="cip" data-tingkat="4" data-i18n="tingkat.4">Subgolongan</button>
+      <button type="button" class="cip" data-tingkat="6" data-i18n="tingkat.6">Jabatan</button>
     </div>
   </form>
 
   <div class="tata-letak">
     <section class="panel panel-daftar" aria-label="Penelusuran dan hasil pencarian">
       <div class="panel-kepala">
-        <h2 id="judul-daftar">Telusuri hierarki</h2>
+        <h2 id="judul-daftar" data-i18n="panel.telusuri">Telusuri hierarki</h2>
         <span class="jumlah" id="jumlah-daftar"></span>
       </div>
       <div id="daftar" class="daftar" tabindex="-1"></div>
     </section>
 
-    <section class="panel panel-rinci" aria-label="Rincian entri" aria-live="polite">
-      <div id="rinci"></div>
+    <section class="panel panel-rinci" aria-label="Rincian entri">
+      <div id="rinci" aria-live="polite"></div>
     </section>
   </div>
 
   <section id="tentang" class="tentang">
-    <h2>Tentang data ini</h2>
-
+    <h2 data-i18n="tentang.judul">Tentang data ini</h2>
     <div class="kartu-baris" id="ringkas-jumlah"></div>
 
-    <h3>Mengapa 447, bukan 449</h3>
-    <p>
-      Empat pemeriksaan yang tidak saling bergantung menghasilkan angka yang sama, yaitu 447 subgolongan:
-      Daftar Isi publikasi (halaman PDF 11–26); judul pada bagian uraian (halaman PDF 103–1108);
-      pemindaian seluruh fragmen teks pada kolom kode tanpa memakai aturan huruf tebal; serta daftar kode
-      anak yang tercantum di dalam uraian induk, yaitu 584 rujukan dari 173 entri induk yang seluruhnya
-      memiliki judul sendiri.
-    </p>
-    <p>
-      Untuk seluruh 630 kode tingkat 1–4 digit, Daftar Isi dan bagian uraian cocok pada kode, nama, dan
-      nomor halaman cetak sekaligus, tanpa satu pun perbedaan. Angka 449 hanya muncul pada narasi halaman
-      PDF 44, Tabel 3 (halaman PDF 45), dan Tabel 19 (halaman PDF 86). Selisihnya terletak pada golongan
-      pokok 2 (93 berbanding 94, Tabel 27) dan golongan pokok 6 (18 berbanding 19, Tabel 31).
-    </p>
-    <p>
-      Hal ini perlu dikonfirmasikan kepada tim penyusun. Sampai ada keputusan penyusun, data di sini
-      memuat 447 subgolongan karena itulah yang tercetak.
-    </p>
+    <h3 data-i18n="tentang.mengapa">Mengapa 447, bukan 449</h3>
+    <p data-i18n="tentang.mengapaP1">Empat pemeriksaan yang tidak saling bergantung menghasilkan angka yang sama, yaitu 447 subgolongan: Daftar Isi publikasi; judul pada bagian uraian; pemindaian seluruh fragmen teks pada kolom kode; serta daftar kode anak yang tercantum di dalam uraian induk.</p>
+    <p data-i18n="tentang.mengapaP2">Untuk seluruh 630 kode tingkat 1–4 digit, Daftar Isi dan bagian uraian cocok pada kode, nama, dan nomor halaman sekaligus, tanpa satu pun perbedaan. Selisihnya terletak pada golongan pokok 2 dan golongan pokok 6, dan perlu dikonfirmasikan kepada tim penyusun.</p>
 
-    <h3>Cara memakai</h3>
+    <h3 data-i18n="tentang.pakai">Cara memakai</h3>
     <ul>
-      <li>Kolom <code>uraian_resmi</code> memuat tugas, contoh jabatan, dan pengecualian. Kesamaan judul saja sering tidak cukup untuk menetapkan kode.</li>
-      <li>Kode bertanda <span class="lencana lencana-sisa">kelompok sisa</span> adalah kode “lainnya” atau “YTDL”. Pakai hanya bila tidak ada kode yang lebih spesifik.</li>
-      <li>Setiap entri mencantumkan nomor halaman cetak dan halaman PDF agar dapat dirujuk balik ke publikasi.</li>
-      <li>Seluruh data juga tersedia sebagai <a href="/api/v1">API JSON terbuka</a> tanpa autentikasi.</li>
+      <li data-i18n="tentang.pakai1">Uraian resmi memuat tugas, contoh jabatan, dan pengecualian. Kesamaan judul saja sering tidak cukup untuk menetapkan kode.</li>
+      <li data-i18n="tentang.pakai2">Kode bertanda kelompok sisa adalah kode “lainnya” atau “YTDL”. Pakai hanya bila tidak ada kode yang lebih spesifik.</li>
+      <li data-i18n="tentang.pakai3">Setiap entri mencantumkan nomor halaman cetak dan halaman PDF agar dapat dirujuk balik ke publikasi.</li>
+      <li><a href="/api/v1" data-i18n="tentang.pakai4">Seluruh data juga tersedia sebagai API JSON terbuka tanpa autentikasi.</a></li>
     </ul>
 
-    <h3>Ketentuan</h3>
-    <p id="ketentuan-teks">
-      Isi KBJI 2026 adalah hak cipta Badan Pusat Statistik. Halaman hak cipta publikasi menyatakan:
-      dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku untuk tujuan komersial
-      tanpa izin tertulis dari Badan Pusat Statistik. Ketentuan itu berlaku juga atas data pada situs ini.
-      Kode program situs dan alat ekstraksinya dilisensikan terpisah dengan lisensi MIT.
-    </p>
+    <h3 data-i18n="tentang.ketentuan">Ketentuan</h3>
+    <p data-i18n="tentang.ketentuanIsi">Isi KBJI 2026 adalah hak cipta Badan Pusat Statistik. Halaman hak cipta publikasi menyatakan: dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik. Ketentuan itu berlaku juga atas data pada situs ini. Kode program situs dan alat ekstraksinya dilisensikan terpisah dengan lisensi MIT.</p>
 
     <dl class="meta-daftar" id="meta-daftar"></dl>
   </section>
@@ -127,20 +118,101 @@
 
 <footer class="kaki">
   <div class="bungkus">
+    <p><strong data-i18n="kaki.sumber">Sumber</strong>: <span data-i18n="kaki.sumberIsi">Klasifikasi Baku Jabatan Indonesia (KBJI) 2026, Volume 1 — Badan Pusat Statistik dan Kementerian Ketenagakerjaan Republik Indonesia. Katalog 1302037, nomor publikasi 03100.26011.</span></p>
     <p>
-      Sumber: <strong>Klasifikasi Baku Jabatan Indonesia (KBJI) 2026, Volume 1</strong> —
-      Badan Pusat Statistik dan Kementerian Ketenagakerjaan Republik Indonesia.
-      Katalog 1302037, nomor publikasi 03100.26011.
-    </p>
-    <p>
-      Proyek sumber terbuka. Bukan penerbitan resmi KBJI 2026.
-      <a href="https://github.com/alvinvigo/KBJI-2026">Kode sumber dan data</a> &middot;
-      <a href="https://github.com/alvinvigo/KBJI-2026/blob/main/KETENTUAN_DATA.md">Ketentuan penggunaan</a>
+      <span data-i18n="kaki.sifat">Proyek sumber terbuka. Bukan penerbitan resmi KBJI 2026.</span>
+      <a href="https://github.com/alvinvigo/KBJI-2026" data-i18n="kaki.kode">Kode sumber dan data</a> ·
+      <a href="https://github.com/alvinvigo/KBJI-2026/blob/main/KETENTUAN_DATA.md" data-i18n="kaki.ketentuan">Ketentuan penggunaan</a>
     </p>
     <p class="kaki-kecil" id="kaki-meta"></p>
   </div>
 </footer>
 
+<!-- Panel preferensi dan aksesibilitas -->
+<div class="tirai" id="tirai" hidden></div>
+<aside class="pref" id="pref" role="dialog" aria-modal="true" aria-labelledby="pref-judul" hidden>
+  <div class="pref-kepala">
+    <h2 id="pref-judul" data-i18n="pref.judul">Preferensi &amp; Aksesibilitas</h2>
+    <button class="tombol-ikon" id="tutup-pref" type="button" aria-label="Tutup" data-i18n-attr="aria-label:pref.tutup">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="pref-isi">
+    <fieldset class="pref-grup">
+      <legend data-i18n="pref.bahasa">Bahasa</legend>
+      <div class="pilihan" role="radiogroup" data-pref="bahasa">
+        <button type="button" class="pilihan-butir" data-nilai="id" role="radio" aria-checked="true">Bahasa Indonesia</button>
+        <button type="button" class="pilihan-butir" data-nilai="en" role="radio" aria-checked="false">English</button>
+      </div>
+      <p class="pref-ket" data-i18n="pref.bahasaCatatan">Hanya teks antarmuka yang berubah. Kode, nama, dan uraian jabatan tetap dalam bahasa Indonesia sesuai publikasi resmi.</p>
+    </fieldset>
+
+    <fieldset class="pref-grup">
+      <legend data-i18n="pref.tampilan">Tampilan</legend>
+      <span class="pref-label" data-i18n="pref.tema">Tema</span>
+      <div class="pilihan" role="radiogroup" data-pref="tema">
+        <button type="button" class="pilihan-butir" data-nilai="sistem" role="radio" aria-checked="true" data-i18n="pref.temaSistem">Ikuti sistem</button>
+        <button type="button" class="pilihan-butir" data-nilai="terang" role="radio" aria-checked="false" data-i18n="pref.temaTerang">Terang</button>
+        <button type="button" class="pilihan-butir" data-nilai="gelap" role="radio" aria-checked="false" data-i18n="pref.temaGelap">Gelap</button>
+      </div>
+
+      <span class="pref-label" data-i18n="pref.ukuran">Ukuran teks</span>
+      <div class="pilihan" role="radiogroup" data-pref="ukuran">
+        <button type="button" class="pilihan-butir" data-nilai="normal" role="radio" aria-checked="true" data-i18n="pref.ukuranNormal">Normal</button>
+        <button type="button" class="pilihan-butir" data-nilai="besar" role="radio" aria-checked="false" data-i18n="pref.ukuranBesar">Besar</button>
+        <button type="button" class="pilihan-butir" data-nilai="sangat-besar" role="radio" aria-checked="false" data-i18n="pref.ukuranSangatBesar">Sangat besar</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="pref-grup">
+      <legend data-i18n="pref.membaca">Kemudahan membaca</legend>
+
+      <label class="saklar">
+        <input type="checkbox" data-pref-saklar="kontras">
+        <span class="saklar-gagang" aria-hidden="true"></span>
+        <span class="saklar-teks">
+          <span data-i18n="pref.kontras">Kontras tinggi</span>
+          <small data-i18n="pref.kontrasKet">Menebalkan warna teks dan garis tepi.</small>
+        </span>
+      </label>
+
+      <label class="saklar">
+        <input type="checkbox" data-pref-saklar="spasi">
+        <span class="saklar-gagang" aria-hidden="true"></span>
+        <span class="saklar-teks">
+          <span data-i18n="pref.spasi">Spasi baca lega</span>
+          <small data-i18n="pref.spasiKet">Melebarkan jarak huruf, kata, dan baris. Membantu pembaca disleksia.</small>
+        </span>
+      </label>
+
+      <label class="saklar">
+        <input type="checkbox" data-pref-saklar="garis-tautan">
+        <span class="saklar-gagang" aria-hidden="true"></span>
+        <span class="saklar-teks">
+          <span data-i18n="pref.garisTautan">Garis bawah pada tautan</span>
+          <small data-i18n="pref.garisTautanKet">Menandai tautan tanpa bergantung pada warna.</small>
+        </span>
+      </label>
+
+      <label class="saklar">
+        <input type="checkbox" data-pref-saklar="gerak">
+        <span class="saklar-gagang" aria-hidden="true"></span>
+        <span class="saklar-teks">
+          <span data-i18n="pref.gerak">Kurangi animasi</span>
+          <small data-i18n="pref.gerakKet">Mematikan transisi dan gerakan halus.</small>
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="pref-kaki">
+      <button type="button" class="tombol" id="setel-pref" data-i18n="pref.setel">Kembalikan ke bawaan</button>
+      <p class="pref-ket" data-i18n="pref.tersimpan">Preferensi tersimpan di peramban ini.</p>
+    </div>
+  </div>
+</aside>
+
+<script src="/assets/i18n.js" defer></script>
 <script src="/assets/app.js" defer></script>
 </body>
 </html>

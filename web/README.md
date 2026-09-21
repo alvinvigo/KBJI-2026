@@ -18,6 +18,16 @@ web/
    └─ data/              dihasilkan: indeks.json, meta.json, blok/*.json
 ```
 
+## Antarmuka
+
+- Penelusuran hierarki lima tingkat, pencarian instan atas 3.010 entri, dan tautan dalam per kode.
+- **Rel posisi**: kelima tingkat hierarki selalu terlihat pada panel rincian. Leluhur dapat diklik;
+  tingkat di bawah posisi kini menampilkan jumlah turunannya.
+- **Preferensi & Aksesibilitas**: bahasa Indonesia/Inggris, tema, tiga ukuran teks, kontras tinggi,
+  spasi baca lega, garis bawah tautan, dan kurangi animasi. Disimpan di `localStorage`.
+- Dua bahasa hanya menyentuh teks antarmuka. Kode, nama resmi, dan uraian jabatan tetap dalam
+  bahasa Indonesia karena menerjemahkannya akan mengubah isi resmi.
+
 ## Bentuk data
 
 `bangun_data.py` memecah `output/kbji_2026_hierarki.csv` menjadi berkas kecil agar dapat disajikan
